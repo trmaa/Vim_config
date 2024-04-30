@@ -7,6 +7,7 @@ set smarttab      " Tamaño de indentación
 set encoding=utf-8
 set softtabstop=4 " Tamaño de tabulación suave
 set background=dark
+set rtp +=~/.vim
 
 " Importar plugins y configuraciones
 if has('nvim')
@@ -25,9 +26,9 @@ if has('nvim')
   Plug 'ryanoasis/vim-devicons'       " Developer Icons
   Plug 'tc50cal/vim-terminal'         " Vim Terminal
   Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-  Plug 'neoclide/coc.nvim'            " Auto Completion
   Plug 'akinsho/nvim-bufferline.lua'  " Bufferline
   Plug 'ellisonleao/gruvbox.nvim'     " Gruvbox theme
+  Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm ci' }
 
   call plug#end()
   

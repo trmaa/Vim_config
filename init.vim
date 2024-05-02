@@ -29,6 +29,9 @@ if has('nvim')
   Plug 'akinsho/nvim-bufferline.lua'  " Bufferline
   Plug 'ellisonleao/gruvbox.nvim'     " Gruvbox theme
   Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm ci' }
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1' }
+  " or                                , { 'branch': '0.1.x' }
 
   call plug#end()
   
@@ -56,6 +59,7 @@ endfunction
 nnoremap <leader>a :AirlineToggle<CR>
 
 " Atajos útiles
+nnoremap <C-g> :Telescope find_files<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <C-t> :TerminalSplit bash<CR>

@@ -1,4 +1,5 @@
 " Configuraciones básicas
+syntax on
 set number        " Mostrar números de línea
 set autoindent
 set tabstop=4     " Tamaño de tabulación
@@ -6,15 +7,32 @@ set shiftwidth=4
 set smarttab      " Tamaño de indentación
 set encoding=utf-8
 set softtabstop=4 " Tamaño de tabulación suave
-set background=dark
 set rtp +=~/.vim
 
+if has("termguicolors")
+  set termguicolors
+  if &t_8f == ''
+    " The first characters after the equals sign are literal escape characters.
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
+  endif
+endif
+
+set background=dark
+hi clear
+if exists('syntax_on')
+  syntax reset
+endif
+let g:colors_name = 'test'
+hi! link vimCommand ErrorMsg
+hi vimOption cterm=reverse gui=reverse
+
 " Importar plugins y configuraciones
-if has('nvim')
   " Plugin Manager: Plug.vim
   call plug#begin('~/.config/nvim/plugged')
 
   " Ejemplo de plugins
+  Plug 'szebniok/tree-sitter-wgsl'
   Plug 'HoNamDuong/hybrid.nvim'
   Plug 'tpope/vim-fugitive'           " Git integración
   Plug 'tpope/vim-surround'           " Surrounding ysw
@@ -29,9 +47,11 @@ if has('nvim')
   Plug 'akinsho/nvim-bufferline.lua'  " Bufferline
   Plug 'ellisonleao/gruvbox.nvim'     " Gruvbox theme
   Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm ci' }
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1' }
-  " or                                , { 'branch': '0.1.x' }
+  Plug 'twolfson/sublime-files'
+  Plug 'kien/ctrlp.vim'
+  "Plug 'nvim-lua/plenary.nvim'
+  "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+  " or                                , { 'branch': '0.1.x' }  
 
   call plug#end()
   
@@ -39,7 +59,6 @@ if has('nvim')
   colorscheme gruvbox
   " colorscheme everforest
 
-endif
 
 " Returns true if the color hex value is light
 function! IsHexColorLight(color) abort
@@ -59,10 +78,15 @@ endfunction
 nnoremap <leader>a :AirlineToggle<CR>
 
 " Atajos útiles
-nnoremap <C-g> :Telescope find_files<CR>
-nnoremap <C-f> :NERDTreeToggle<CR>
+nnoremap <C-g> :Finder files<CR>
+nnoremap <C-p> :NERDTreeToggle<CR>
+nnoremap <C-f> :CtrlP<CR>
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <C-t> :TerminalSplit bash<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-c> :xclip -selection clipboard<CR>
 nnoremap <C-v> :xclip -selection clipboard -o<CR>
+
+if exists("syntax_on")
+    syntax reset
+endif

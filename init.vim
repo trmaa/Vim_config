@@ -49,6 +49,7 @@ hi vimOption cterm=reverse gui=reverse
   Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm ci' }
   Plug 'twolfson/sublime-files'
   Plug 'kien/ctrlp.vim'
+  Plug 'api/vim-buftabline'
   "Plug 'nvim-lua/plenary.nvim'
   "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
   " or                                , { 'branch': '0.1.x' }  
@@ -79,9 +80,8 @@ nnoremap <leader>a :AirlineToggle<CR>
 
 " Atajos útiles
 nnoremap <C-g> :Finder files<CR>
-nnoremap <C-p> :NERDTreeToggle<CR>
+nnoremap <C-l> :NERDTreeToggle<CR>
 nnoremap <C-f> :CtrlP<CR>
-nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <C-t> :TerminalSplit bash<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-c> :xclip -selection clipboard<CR>

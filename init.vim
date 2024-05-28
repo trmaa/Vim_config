@@ -94,8 +94,6 @@ nnoremap <C-l> :NERDTreeToggle<CR>
 nnoremap <C-f> :CtrlP<CR>
 nnoremap <C-t> :TerminalSplit bash<CR>
 nnoremap <C-s> :w<CR>
-nnoremap <C-c> :xclip -selection clipboard<CR>
-nnoremap <C-v> :xclip -selection clipboard -o<CR>
 
 " Usa Tab para expandir snippets y moverse a través de placeholders
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -106,6 +104,15 @@ inoremap <silent><expr> <C-space> coc#refresh()
 " Usa Tab y Shift-Tab para moverse a través de placeholders en snippets
 let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
+
+" Usa Ctrl-C para copiar al portapapeles del sistema en modo visual
+vnoremap <C-c> "+y
+
+" Usa Ctrl-V para pegar desde el portapapeles del sistema en modo normal
+nnoremap <C-v> "+p
+
+" Usa Ctrl-V para pegar desde el portapapeles del sistema en modo insertar
+inoremap <C-v> <C-r><C-o>+
 
 if exists("syntax_on")
     syntax reset

@@ -9,6 +9,10 @@ set encoding=utf-8
 set softtabstop=4 " Tamaño de tabulación suave
 set rtp +=~/.vim
 
+filetype on
+filetype plugin on
+filetype indent on
+
 if has("termguicolors")
   set termguicolors
   if &t_8f == ''
@@ -32,6 +36,10 @@ hi vimOption cterm=reverse gui=reverse
   call plug#begin('~/.config/nvim/plugged')
 
   " Ejemplo de plugins
+  Plug 'sheerun/vim-polyglot'
+  Plug 'pangloss/vim-javascript'
+  Plug 'octol/vim-cpp-enhanced-highlight'
+  Plug 'OmniSharp/omnisharp-vim'
   Plug 'szebniok/tree-sitter-wgsl'
   Plug 'HoNamDuong/hybrid.nvim'
   Plug 'tpope/vim-fugitive'           " Git integración
@@ -50,6 +58,7 @@ hi vimOption cterm=reverse gui=reverse
   Plug 'twolfson/sublime-files'
   Plug 'kien/ctrlp.vim'
   Plug 'api/vim-buftabline'
+  "Plug 'AlexvZyl/nordic.nvim'
   "Plug 'nvim-lua/plenary.nvim'
   "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
   " or                                , { 'branch': '0.1.x' }  
@@ -58,6 +67,7 @@ hi vimOption cterm=reverse gui=reverse
   
   " Configuración de tema
   colorscheme gruvbox
+  " colorscheme nordic
   " colorscheme everforest
 
 
@@ -87,6 +97,20 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-c> :xclip -selection clipboard<CR>
 nnoremap <C-v> :xclip -selection clipboard -o<CR>
 
+" Usa Tab para expandir snippets y moverse a través de placeholders
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <C-space> coc#refresh()
+
+" Usa Tab y Shift-Tab para moverse a través de placeholders en snippets
+let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_prev = '<S-Tab>'
+
 if exists("syntax_on")
     syntax reset
 endif
+
+au BufRead,BufNewFile *.js set filetype=javascript
+au BufRead,BufNewFile *.cpp,*.h set filetype=cpp
+au BufRead,BufNewFile *.cs set filetype=cs

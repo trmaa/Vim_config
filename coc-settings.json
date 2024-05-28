@@ -1,0 +1,4 @@
+{
+	"snippets.ultisnips.enable":true,
+	"spippets.userSnippetsDirectory": "~/.config/nvim/my-snippets"
+}

@@ -52,12 +52,13 @@ hi vimOption cterm=reverse gui=reverse
   Plug 'ryanoasis/vim-devicons'       " Developer Icons
   Plug 'tc50cal/vim-terminal'         " Vim Terminal
   Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-  Plug 'akinsho/nvim-bufferline.lua'  " Bufferline
+  "Plug 'akinsho/nvim-bufferline.lua'  " Bufferline
   Plug 'ellisonleao/gruvbox.nvim'     " Gruvbox theme
   Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm ci' }
   Plug 'twolfson/sublime-files'
   Plug 'kien/ctrlp.vim'
-  Plug 'api/vim-buftabline'
+  "Plug 'api/vim-buftabline'
+  Plug 'rebelot/kanagawa.nvim'
   "Plug 'AlexvZyl/nordic.nvim'
   "Plug 'nvim-lua/plenary.nvim'
   "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
@@ -66,16 +67,18 @@ hi vimOption cterm=reverse gui=reverse
   call plug#end()
   
   " Configuración de tema
-  colorscheme gruvbox
+  " colorscheme kanagawa
+    colorscheme gruvbox
   " colorscheme nordic
   " colorscheme everforest
 
 
 " Returns true if the color hex value is light
+
 function! IsHexColorLight(color) abort
   let l:raw_color = trim(a:color, '#')
 
-  let l:red = str2nr(substitute(l:raw_color, '(.{2}).{4}', '1', 'g'), 16)
+  let l:red = str2nr(substitute(l:raw_color, '.{0}(.{2})', '1', 'g'), 16)
   let l:green = str2nr(substitute(l:raw_color, '.{2}(.{2}).{2}', '1', 'g'), 16)
   let l:blue = str2nr(substitute(l:raw_color, '.{4}(.{2})', '1', 'g'), 16)
 

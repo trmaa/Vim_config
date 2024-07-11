@@ -63,15 +63,20 @@ hi vimOption cterm=reverse gui=reverse
   "Plug 'nvim-lua/plenary.nvim'
   "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
   " or                                , { 'branch': '0.1.x' }  
+  Plug 'rust-lang/rust.vim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'dense-analysis/ale'
 
   call plug#end()
   
   " Configuración de tema
   " colorscheme kanagawa
-    colorscheme gruvbox
+  " colorscheme gruvbox
   " colorscheme nordic
   " colorscheme everforest
-
+    " lucid, afterglow, twilight256
+    set background=dark
+    colorscheme twilight256
 
 " Returns true if the color hex value is light
 
@@ -124,3 +129,21 @@ endif
 au BufRead,BufNewFile *.js set filetype=javascript
 au BufRead,BufNewFile *.cpp,*.h set filetype=cpp
 au BufRead,BufNewFile *.cs set filetype=cs
+au BufRead,BufNewFile *.rs set filetype=rust
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
+let g:ale_c_cpp_checkers = ['clang']
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+    \   'c': ['clang', "compile_commands"],
+    \   'cpp': ["clang"],
+    \}
+let g:ale_cpp_gcc_executable = 'g++'
+let g:ale_cpp_clang_executable = 'clang++'
+let g:ale_cpp_compile_commands = 1
+let g:ale_verbose = 1
+let g:ale_cpp_clang_options = '-I./include/ -I./lib/'
+let g:ale_cpp_clang_options = '-p .clang_complete'

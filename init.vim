@@ -13,15 +13,6 @@ filetype on
 filetype plugin on
 filetype indent on
 
-if has("termguicolors")
-  set termguicolors
-  if &t_8f == ''
-    " The first characters after the equals sign are literal escape characters.
-    set t_8f=[38;2;%lu;%lu;%lum
-    set t_8b=[48;2;%lu;%lu;%lum
-  endif
-endif
-
 set background=dark
 hi clear
 if exists('syntax_on')
@@ -43,7 +34,7 @@ hi vimOption cterm=reverse gui=reverse
   Plug 'szebniok/tree-sitter-wgsl'
   Plug 'HoNamDuong/hybrid.nvim'
   Plug 'tpope/vim-fugitive'           " Git integración
-  Plug 'tpope/vim-surround'           " Surrounding ysw
+  "Plug 'tpope/vim-surround'           " Surrounding ysw
   Plug 'preservim/nerdtree'           " NerdTree
   Plug 'tpope/vim-commentary'         " For Commenting gcc & gc
   Plug 'vim-airline/vim-airline'      " Status bar
@@ -63,9 +54,11 @@ hi vimOption cterm=reverse gui=reverse
   "Plug 'nvim-lua/plenary.nvim'
   "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
   " or                                , { 'branch': '0.1.x' }  
-  Plug 'rust-lang/rust.vim'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  "Plug 'rust-lang/rust.vim'
+  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'dense-analysis/ale'
+  Plug 'nyoom-engineering/oxocarbon.nvim'
+  Plug 'n1ghtmare/noirblaze-vim'
 
   call plug#end()
   
@@ -74,30 +67,15 @@ hi vimOption cterm=reverse gui=reverse
   " colorscheme gruvbox
   " colorscheme nordic
   " colorscheme everforest
-    " lucid, afterglow, twilight256
+    " lucid, afterglow, twilight256, oxocarbon
     set background=dark
     colorscheme twilight256
-
-" Returns true if the color hex value is light
-
-function! IsHexColorLight(color) abort
-  let l:raw_color = trim(a:color, '#')
-
-  let l:red = str2nr(substitute(l:raw_color, '.{0}(.{2})', '1', 'g'), 16)
-  let l:green = str2nr(substitute(l:raw_color, '.{2}(.{2}).{2}', '1', 'g'), 16)
-  let l:blue = str2nr(substitute(l:raw_color, '.{4}(.{2})', '1', 'g'), 16)
-
-  let l:brightness = ((l:red * 299) + (l:green * 587) + (l:blue * 114)) / 1000
-
-  return l:brightness > 155
-endfunction
 
 " Mapeos de teclas
 " Ejemplo de mapeo para abrir la barra de estado de Airline
 nnoremap <leader>a :AirlineToggle<CR>
 
 " Atajos útiles
-nnoremap <C-g> :Finder files<CR>
 nnoremap <C-l> :NERDTreeToggle<CR>
 nnoremap <C-f> :CtrlP<CR>
 nnoremap <C-t> :TerminalSplit bash<CR>
@@ -139,7 +117,7 @@ let g:ale_c_cpp_checkers = ['clang']
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
     \   'c': ['clang', "compile_commands"],
-    \   'cpp': ["clang"],
+    \   'cpp': ["compile_commands"],
     \}
 let g:ale_cpp_gcc_executable = 'g++'
 let g:ale_cpp_clang_executable = 'clang++'
@@ -147,3 +125,5 @@ let g:ale_cpp_compile_commands = 1
 let g:ale_verbose = 1
 let g:ale_cpp_clang_options = '-I./include/ -I./lib/'
 let g:ale_cpp_clang_options = '-p .clang_complete'
+
+

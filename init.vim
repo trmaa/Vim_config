@@ -1,6 +1,7 @@
 " Configuraciones básicas
 syntax on
 set number        " Mostrar números de línea
+set relativenumber
 set autoindent
 set tabstop=4     " Tamaño de tabulación
 set shiftwidth=4
@@ -60,6 +61,8 @@ hi vimOption cterm=reverse gui=reverse
   Plug 'nyoom-engineering/oxocarbon.nvim'
   Plug 'n1ghtmare/noirblaze-vim'
   Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+  Plug 'sphamba/smear-cursor.nvim'
+  Plug 'hallison/vim-darkdevel'
 
   call plug#end()
   
@@ -70,7 +73,9 @@ hi vimOption cterm=reverse gui=reverse
   " colorscheme everforest
     " lucid, afterglow, twilight256, oxocarbon
     set background=dark
-    colorscheme afterglow 
+    colorscheme darkdevel 
+
+lua require('smear_cursor').enabled = true
 
 " Mapeos de teclas
 " Ejemplo de mapeo para abrir la barra de estado de Airline
@@ -127,10 +132,10 @@ let g:ale_verbose = 1
 let g:ale_cpp_clang_options = '-I./include/ -I./lib/'
 let g:ale_cpp_clang_options = '-p .clang_complete'
 
-
 imap <script><silent><nowait><expr> <C-g> codeium#Accept()
 imap <script><silent><nowait><expr> <C-h> codeium#AcceptNextWord()
 imap <script><silent><nowait><expr> <C-j> codeium#AcceptNextLine()
 imap <C-;>   <Cmd>call codeium#CycleCompletions(1)<CR>
 imap <C-,>   <Cmd>call codeium#CycleCompletions(-1)<CR>
 imap <C-x>   <Cmd>call codeium#Clear()<CR>
+imap <Tab> <Tab>

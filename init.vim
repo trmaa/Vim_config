@@ -9,6 +9,9 @@ set smarttab      " Tamaño de indentación
 set encoding=utf-8
 set softtabstop=4 " Tamaño de tabulación suave
 set rtp +=~/.vim
+set guicursor=""
+set scrolloff=16
+set updatetime=50
 
 filetype on
 filetype plugin on
@@ -17,7 +20,7 @@ filetype indent on
 set background=dark
 hi clear
 if exists('syntax_on')
-  syntax reset
+    syntax reset
 endif
 let g:colors_name = 'test'
 hi! link vimCommand ErrorMsg
@@ -25,46 +28,47 @@ hi vimOption cterm=reverse gui=reverse
 
 " Importar plugins y configuraciones
   " Plugin Manager: Plug.vim
-  call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
-  " Ejemplo de plugins
-  Plug 'sheerun/vim-polyglot'
-  Plug 'pangloss/vim-javascript'
-  Plug 'octol/vim-cpp-enhanced-highlight'
-  Plug 'OmniSharp/omnisharp-vim'
-  Plug 'szebniok/tree-sitter-wgsl'
-  Plug 'HoNamDuong/hybrid.nvim'
-  Plug 'tpope/vim-fugitive'           " Git integración
-  "Plug 'tpope/vim-surround'           " Surrounding ysw
-  Plug 'preservim/nerdtree'           " NerdTree
-  Plug 'tpope/vim-commentary'         " For Commenting gcc & gc
-  Plug 'vim-airline/vim-airline'      " Status bar
-  Plug 'ap/vim-css-color'             " CSS Color Preview
-  Plug 'rafi/awesome-vim-colorschemes'" Retro Scheme
-  Plug 'ryanoasis/vim-devicons'       " Developer Icons
-  Plug 'tc50cal/vim-terminal'         " Vim Terminal
-  Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-  "Plug 'akinsho/nvim-bufferline.lua'  " Bufferline
-  Plug 'ellisonleao/gruvbox.nvim'     " Gruvbox theme
-  Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm ci' }
-  Plug 'twolfson/sublime-files'
-  Plug 'kien/ctrlp.vim'
-  "Plug 'api/vim-buftabline'
-  Plug 'rebelot/kanagawa.nvim'
-  "Plug 'AlexvZyl/nordic.nvim'
-  "Plug 'nvim-lua/plenary.nvim'
-  "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
-  " or                                , { 'branch': '0.1.x' }  
-  "Plug 'rust-lang/rust.vim'
-  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'dense-analysis/ale'
-  Plug 'nyoom-engineering/oxocarbon.nvim'
-  Plug 'n1ghtmare/noirblaze-vim'
-  Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
-  Plug 'sphamba/smear-cursor.nvim'
-  Plug 'hallison/vim-darkdevel'
+    " Ejemplo de plugins
+    Plug 'sheerun/vim-polyglot'
+    Plug 'pangloss/vim-javascript'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'OmniSharp/omnisharp-vim'
+    Plug 'szebniok/tree-sitter-wgsl'
+    Plug 'HoNamDuong/hybrid.nvim'
+    Plug 'tpope/vim-fugitive'           " Git integración
+    "Plug 'tpope/vim-surround'           " Surrounding ysw
+    Plug 'preservim/nerdtree'           " NerdTree
+    Plug 'tpope/vim-commentary'         " For Commenting gcc & gc
+    Plug 'vim-airline/vim-airline'      " Status bar
+    Plug 'ap/vim-css-color'             " CSS Color Preview
+    Plug 'rafi/awesome-vim-colorschemes'" Retro Scheme
+    Plug 'ryanoasis/vim-devicons'       " Developer Icons
+    Plug 'tc50cal/vim-terminal'         " Vim Terminal
+    Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+    "Plug 'akinsho/nvim-bufferline.lua'  " Bufferline
+    Plug 'ellisonleao/gruvbox.nvim'     " Gruvbox theme
+    Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm ci' }
+    Plug 'twolfson/sublime-files'
+    Plug 'kien/ctrlp.vim'
+    "Plug 'api/vim-buftabline'
+    Plug 'rebelot/kanagawa.nvim'
+    "Plug 'AlexvZyl/nordic.nvim'
+    "Plug 'nvim-lua/plenary.nvim'
+    "Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+    " or                                , { 'branch': '0.1.x' }  
+    "Plug 'rust-lang/rust.vim'
+    "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'dense-analysis/ale'
+    Plug 'nyoom-engineering/oxocarbon.nvim'
+    Plug 'n1ghtmare/noirblaze-vim'
+    Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+    Plug 'sphamba/smear-cursor.nvim'
+    Plug 'hallison/vim-darkdevel'
+    Plug 'lervag/vimtex'
 
-  call plug#end()
+call plug#end()
   
   " Configuración de tema
   " colorscheme kanagawa
@@ -72,8 +76,8 @@ hi vimOption cterm=reverse gui=reverse
   " colorscheme nordic
   " colorscheme everforest
     " lucid, afterglow, twilight256, oxocarbon
-    set background=dark
-    colorscheme darkdevel 
+set background=dark
+colorscheme darkdevel 
 
 lua require('smear_cursor').enabled = true
 
@@ -96,6 +100,8 @@ inoremap <silent><expr> <C-space> coc#refresh()
 " Usa Tab y Shift-Tab para moverse a través de placeholders en snippets
 let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
+
+let g:vimtex_view_method = 'zathura'
 
 " Usa Ctrl-C para copiar al portapapeles del sistema en modo visual
 vnoremap <C-c> "+y

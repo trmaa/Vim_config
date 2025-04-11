@@ -80,14 +80,23 @@ _G.packer_plugins = {
     url = "https://github.com/neoclide/coc.nvim"
   },
   ["completion-nvim"] = {
-    after = { "vim-vsnip-integ", "vim-vsnip" },
+    after = { "vim-vsnip", "vim-vsnip-integ" },
     loaded = false,
     needs_bufread = false,
     path = "/home/pablo/.local/share/nvim/site/pack/packer/opt/completion-nvim",
     url = "https://github.com/haorenW1025/completion-nvim"
   },
+  ["gruvbox-material"] = {
+    loaded = true,
+    path = "/home/pablo/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/pablo/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   neovim = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0" },
     loaded = true,
     path = "/home/pablo/.local/share/nvim/site/pack/packer/start/neovim",
     url = "https://github.com/rose-pine/neovim"
@@ -106,6 +115,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pablo/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/pablo/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -126,6 +141,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pablo/.local/share/nvim/site/pack/packer/start/vim-darkdevel",
     url = "https://github.com/hallison/vim-darkdevel"
+  },
+  ["vim-vividchalk"] = {
+    loaded = true,
+    path = "/home/pablo/.local/share/nvim/site/pack/packer/start/vim-vividchalk",
+    url = "https://github.com/tpope/vim-vividchalk"
   },
   ["vim-vsnip"] = {
     load_after = {
@@ -155,10 +175,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: neovim
-time([[Config for neovim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "neovim")
-time([[Config for neovim]], false)
 -- Config for: windsurf.nvim
 time([[Config for windsurf.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fcodeium\frequire\0", "config", "windsurf.nvim")

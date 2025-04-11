@@ -1,45 +1,46 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+	--STUFF
+	use 'wbthomason/packer.nvim'
 
-    use {
-	'haorenW1025/completion-nvim',
-	opt = true,
-	requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
-    }
+		--file system
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.8',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+	use 'preservim/nerdtree' 
 
-    use 'hallison/vim-darkdevel'
+		--syntax
+	use 'neoclide/coc.nvim'
+	use {
+		"Exafunction/windsurf.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("codeium").setup({
+			})
+		end
+	}
 
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	--COLOR
+		--treesitter
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	
+		--schemes
+	use 'hallison/vim-darkdevel'
+	use {
+		"rose-pine/neovim",
+		name = "rose-pine",
+	}
+	use 'sainnhe/gruvbox-material'
+	use 'tpope/vim-vividchalk'
 
-    use {
-	'nvim-telescope/telescope.nvim', tag = '0.1.8',
-	-- or                            , branch = '0.1.x',
-	requires = { {'nvim-lua/plenary.nvim'} }
-    }
-
-    use 'neoclide/coc.nvim'
-
-    use {
-	"Exafunction/windsurf.nvim",
-	requires = {
-	    "nvim-lua/plenary.nvim",
-	    "hrsh7th/nvim-cmp",
-	},
-	config = function()
-	    require("codeium").setup({
-	    })
-	end
-    }
-
-    use 'preservim/nerdtree' 
-
-    use {
-	"rose-pine/neovim",
-	name = "rose-pine",
-	config = function()
-	    vim.cmd("colorscheme rose-pine")
-	end
-    }
+		--status bar
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
 end)

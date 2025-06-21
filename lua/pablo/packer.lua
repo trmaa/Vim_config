@@ -37,10 +37,18 @@ return require('packer').startup(function(use)
 	}
 	use 'sainnhe/gruvbox-material'
 	use 'tpope/vim-vividchalk'
+	use 'trapd00r/neverland-vim-theme'
+	use 'nyoom-engineering/oxocarbon.nvim'
+	use 'rebelot/kanagawa.nvim'
 
 		--status bar
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
+
+	use 'rust-lang/rust.vim'
+
+		--cursor
+	use 'sphamba/smear-cursor.nvim'
 end)

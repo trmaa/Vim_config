@@ -40,6 +40,8 @@ return require('packer').startup(function(use)
 	use 'trapd00r/neverland-vim-theme'
 	use 'nyoom-engineering/oxocarbon.nvim'
 	use 'rebelot/kanagawa.nvim'
+	use 'morhetz/gruvbox'
+	use 'julien/vim-colors-green'
 
 		--status bar
 	use {

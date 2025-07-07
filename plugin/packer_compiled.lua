@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/pablo/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
+  gruvbox = {
+    loaded = true,
+    path = "/home/pablo/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
+  },
   ["gruvbox-material"] = {
     loaded = true,
     path = "/home/pablo/.local/share/nvim/site/pack/packer/start/gruvbox-material",
@@ -154,6 +159,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pablo/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-colors-green"] = {
+    loaded = true,
+    path = "/home/pablo/.local/share/nvim/site/pack/packer/start/vim-colors-green",
+    url = "https://github.com/julien/vim-colors-green"
   },
   ["vim-darkdevel"] = {
     loaded = true,

@@ -9,27 +9,31 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.8',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-	use 'preservim/nerdtree' 
+	--use 'preservim/nerdtree' 
 
 		--syntax
 	use 'neoclide/coc.nvim'
-	use {
-		"Exafunction/windsurf.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-		},
-		config = function()
-			require("codeium").setup({
-			})
-		end
-	}
+	--use {
+	--	"Exafunction/windsurf.nvim",
+	--	requires = {
+	--		"nvim-lua/plenary.nvim",
+	--		"hrsh7th/nvim-cmp",
+	--	},
+	--	config = function()
+	--		require("codeium").setup({
+	--		})
+	--	end
+	--}
+
+		--my pluggins
+	--use '/root/coding_adventures/nvim_plugin'
 
 	--COLOR
 		--treesitter
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	
 		--schemes
+	use 'tomasiser/vim-code-dark'
 	use 'hallison/vim-darkdevel'
 	use {
 		"rose-pine/neovim",
@@ -42,6 +46,9 @@ return require('packer').startup(function(use)
 	use 'rebelot/kanagawa.nvim'
 	use 'morhetz/gruvbox'
 	use 'julien/vim-colors-green'
+	use 'jackplus-xyz/binary.nvim'
+	use 'paulfrische/reddish.nvim'
+	
 
 		--status bar
 	use {
@@ -52,5 +59,5 @@ return require('packer').startup(function(use)
 	use 'rust-lang/rust.vim'
 
 		--cursor
-	use 'sphamba/smear-cursor.nvim'
+	--use 'sphamba/smear-cursor.nvim'
 end)

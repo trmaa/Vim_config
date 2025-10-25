@@ -1,10 +1,10 @@
 function set_color(color)
-    color = color or "vim"--"kanagawa"--"gruvbox-material"--"rose-pine"--"darkdevel"--"lucid"--"afterglow"--"twilight256"--"oxocarbon"
+	color = color or "retrobox"--"elflord"--"retrobox"--"delek"--"kanagawa"--"gruvbox-material"--"rose-pine"--"darkdevel"--"lucid"--"afterglow"--"twilight256"--"oxocarbon"
 	vim.cmd.colorscheme(color)
-	vim.opt.background = "light"
+	vim.opt.background = "dark"
 
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 set_color()

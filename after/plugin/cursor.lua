@@ -1,3 +1,3 @@
-require("smear_cursor").setup({
-	never_draw_over_target = false,
-});
+--require("smear_cursor").setup({
+--	never_draw_over_target = false,
+--});

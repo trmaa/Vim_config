@@ -1,8 +1,8 @@
-vim.opt.number = true
-vim.opt.rnu = true
+vim.opt.number = false 
+vim.opt.rnu = false 
 
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 8
+vim.opt.tabstop = 8
 
 vim.opt.incsearch = true
 
@@ -10,7 +10,6 @@ vim.opt.scrolloff = 12
 
 vim.opt.updatetime = 50
 
-vim.opt.background = "light"
 vim.opt.termguicolors = true 
 
 vim.g.mapleader = " "
